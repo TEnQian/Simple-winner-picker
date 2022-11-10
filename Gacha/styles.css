@@ -69,6 +69,15 @@ h1, h2, h3, h4, h5, h6, p{
     margin: 0;;
 }
 
+.section{
+    margin: 0 auto;
+    max-width: 1140px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    padding: 60px 40px;
+}
+
 .header{
     width: 100%;
     display: flex;
