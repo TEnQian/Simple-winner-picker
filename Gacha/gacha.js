@@ -59,7 +59,11 @@ jQuery(document).ready(function($){
             $('.roll-time').text('You have rolled ' + rollTime + ' time(s)');
             $('.winner').text(winner);
             ResultItem[rollTime - 1] = winner;
-            var item = '<p class="result-item"> 第 ' + rollTime + ' 次抽選結果 ： ' + winner + '</p>'; //Just to show result for each time
+            var item = '<p class="result-item"> 第 ' + rollTime + ' 次抽選結果 ： ' + winner + '</p>'; //Show result for each time
+            
+            //In English
+            //var item = '<p class="result-item">Result for No.' + rollTime + 'roll : ' + winner + '</p>';
+            
             $(item).appendTo('.result-list')
             
             //Prevent too much text appear at once if you need to roll many times to decied
@@ -75,11 +79,10 @@ jQuery(document).ready(function($){
             if(ResultItem.length>2){
                 var finalWinner = GetMost(ResultItem);
                 $('.best-result h1').html('出現最多次的選項 ： ' + finalWinner.name  + '\r\n<p>已出現 ： ' + finalWinner.times + '次</p>' + 
-                '<p>出現概率 ： ' + finalWinner.rate + '%</p>'); 
+                '<p>出現概率 ： ' + finalWinner.rate + '%</p>');
+                
                 //In English
-                //'Most frequent winner : winner name'
-                //'Appeared : xx times'
-                //'Probability : xx %'
+                //$('.best-result h1').html('Who has won the most ： ' + finalWinner.name  + '\r\n<p>Won ： ' + finalWinner.times + 'times</p>' + '<p>Probability ： ' + finalWinner.rate + '%</p>');
             }
         }
         else{
