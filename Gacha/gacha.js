@@ -1,13 +1,17 @@
 jQuery(document).ready(function($){
-    let count = 0;
-    const AllCandid = [];
+    
+    let count = 0; //Initial count
+    const AllCandid = []; //Create an array to store all the candidate
+    
+    //Detect keyboard 'Enter' key pressed
     $(".candid-wrapper input").on("keydown", function(event) {
         if(event.which == 13)
         {
             $('.enter-button').trigger('click')
         }
     });
-
+    
+       //Enter button function
       $('.enter-button').click(function(){
         if(count === 0){
             AllCandid[count] = $(".candid-wrapper input").val();
@@ -16,7 +20,9 @@ jQuery(document).ready(function($){
             $('.candid-name p').text(result);
             $(".candid-wrapper input").val('');
           }
-          else if(count > 0){
+          
+         else if(count > 0){
+             //Prevent duplicate candidate, remove if no need
             if(AllCandid.indexOf($(".candid-wrapper input").val()) !== -1){
                 alert('Candidate Exists')
             }
@@ -30,32 +36,50 @@ jQuery(document).ready(function($){
             }
           }
       })
-
+    
+    //Initial roll count
     let rollTime = 1;
-    const ResultItem = [];
+    const ResultItem = []; //Create an array to store all the result
+    
+    //Roll button click function
     $('.roll-button').click(function(){
         if(AllCandid.length > 1){
+            
+            //Disable input field and button to prevent more value added when getting result
             $('.candid-input input').attr('disabled','disabled');
+            $('.enter-button').addClass('disabled');
+            
+            //Display the result container
             $('.gacha-bottom').css('display','flex');
             $('.reset-wrapper').css('display','flex');
-            $('.enter-button').addClass('disabled');
+            
             let totalCandid = AllCandid.length;
-            var winnerIndex = Math.floor(Math.random() * totalCandid);
-            var winner = AllCandid[winnerIndex];
+            var winnerIndex = Math.floor(Math.random() * totalCandid); //Pick a winner randomly
+            var winner = AllCandid[winnerIndex]; 
             $('.roll-time').text('You have rolled ' + rollTime + ' time(s)');
             $('.winner').text(winner);
             ResultItem[rollTime - 1] = winner;
-            var item = '<p class="result-item"> 第 ' + rollTime + ' 次抽選結果 ： ' + winner + '</p>';
+            var item = '<p class="result-item"> 第 ' + rollTime + ' 次抽選結果 ： ' + winner + '</p>'; //Just to show result for each time
             $(item).appendTo('.result-list')
+            
+            //Prevent too much text appear at once if you need to roll many times to decied
+            //5 can change to any number
+            //This part can be removed if no needed
             if(rollTime > 5){
                 const AllItem = document.querySelectorAll('.result-item');
                 $(AllItem[0]).remove();
             }
             rollTime++;
+            
+            //Show the most frequent winner if roll times more than two times
             if(ResultItem.length>2){
                 var finalWinner = GetMost(ResultItem);
                 $('.best-result h1').html('出現最多次的選項 ： ' + finalWinner.name  + '\r\n<p>已出現 ： ' + finalWinner.times + '次</p>' + 
-                '<p>出現概率 ： ' + finalWinner.rate + '%</p>');
+                '<p>出現概率 ： ' + finalWinner.rate + '%</p>'); 
+                //In English
+                //'Most frequent winner : winner name'
+                //'Appeared : xx times'
+                //'Probability : xx %'
             }
         }
         else{
@@ -63,6 +87,7 @@ jQuery(document).ready(function($){
         }
     })
 
+    //Reset all data when reset button click
     $('.reset-btn').click(function(){
         $('.candid-name p').text('');
         $('.roll-time').text('');
@@ -79,6 +104,7 @@ jQuery(document).ready(function($){
         rollTime = 1;
     })
 
+    //Function to get the most frequent winner
     function GetMost(arr){
         let compare = "";
         let mostFreq = "";
