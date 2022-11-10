@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/9ef9b06c92.js" crossorigin="anonymous"></script>
+<script src="gacha.js"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <div class="header-container">
+        <div class="logo">LOGO</div>
+        <div class="nav-bar">
+            <a>Home</a>
+            <a class="dd">
+                About
+                <div class="megamenu">
+                    <div class="container">
+                        <div class="col1 container-column">Column 1</div>
+                        <div class="col2 container-column">Column 2</div>
+                        <div class="col3 container-column">Column 3</div>
+                        <div class="col4 container-column">Column 4</div>
+                    </div>
+                </div>
+            </a>
+            <a>Book</a>
+        </div>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+            <div class="mobile-dropdown">
+                <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+                <a>Home</a>
+                <a>About</a>
+                <a>Book</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body-wrap">
+<div class="section" id="gacha">
+    <div class="gacha-wrapper">
+        <div class="candid-wrapper">
+            <h1>Enter Candidate Name : </h1>
+            <div class="candid-holder">
+                <div class="candid-input">
+                    <label>Enter One Name per time (Press enter key after enter completely)</label>
+                    <input type="text" placeholder="Example : Name 1, Name 2 ...">
+                    <div class="candid-button-wrapper">
+                        <div class="enter-button">Enter</div>
+                        <div class="roll-button-wrapper">
+                            <span class="roll-button">Roll</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="candid-name">
+                    <h2>Your Candidate : </h2>
+                    <p></p>
+                </div>
+            </div>
+        <div class="gacha-bottom">
+            <div class="roll-wrapper">
+                <div class="result-wrapper">
+                    <h1>Winner : </h1>
+                    <br/>
+                    <p class="roll-time"></p>
+                    <p class="winner"></p>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <h1>All results : </h1>
+                <div class="result-list"></div>
+                <div class="best-result"><h1></h1></div>
+            </div>
+        </div>
+        <div class="reset-wrapper"><span class="reset-btn">Reset</span></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer">
+    <div class="footer-container">
+        <div class="logo">LOGO</div>
+        <div class="copyright">EQ © </div>
+        <div class="back-to-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </div>
+</div>
+</body>
+</html>
